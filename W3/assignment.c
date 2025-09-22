@@ -15,19 +15,18 @@ t=돈을 투자한 기간(40년)
 #include<stdio.h>
 #include <math.h>
 #include "calc.h"
+double A(double P) {
+	double r = 0.10;   // 연 이자율 10%
+	int n = 12;        // 월 복리 (연 12번)
+	int t = 40;        // 40년 투자
 
-int main(void) {
-
-	double A;
-	int P = 1000000;
-	double r, n, t;
-	r = 0.1*P;
-	n = 12;
-	t = 40;
-
-	A = pow(P * (1 + (r / n)), (n * t));
-	printf("40년 후 총 금액 %d", A);
-
-	return 0;
+	return P * pow(1 + r / n, n * t);
 }
 
+int main(void) {
+	double principal = 1000000;
+	double future_value = A(principal);
+
+	printf("40년 후 금액: %.2f 원\n", future_value);
+	return 0;
+}
